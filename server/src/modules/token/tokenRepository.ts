@@ -2,7 +2,9 @@ import databaseClient from "../../../database/client";
 import type { Result, Rows } from "../../../database/client";
 
 interface Token {
+  address: string;
   name: string;
+  symbol: string;
   price: number;
   percent_price: number;
   image: string;
@@ -34,9 +36,25 @@ class TokenRepository {
 
   async create(token: Token) {
     const [result] = await databaseClient.query<Result>(
-      "insert into token (name, price, percent_price, image) values (?, ?, ?, ?)",
-      [token.name, token.price, token.percent_price, token.image],
+      "insert into token (address, name, symbol, price, percent_price, image) values (?, ?, ?, ?, ?, ?)",
+      [
+        token.address,
+        token.name,
+        token.symbol,
+        token.price,
+        token.percent_price,
+        token.image,
+      ],
     );
+    return result;
+  }
+
+  async delete(id: number) {
+    const [result] = await databaseClient.query<Result>(
+      "delete from token where id = ?",
+      [id],
+    );
+
     return result;
   }
 
@@ -59,10 +77,10 @@ class TokenRepository {
     }
   };
 
-  getPriceOnCoinMarketCap = async (id: number) => {
+  getPriceOnCoinMarketCap = async (symbol: string) => {
     try {
       const response = await fetch(
-        `https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest?id=${id}`,
+        `https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=${symbol}`,
         {
           headers: {
             "X-CMC_PRO_API_KEY": process.env.COINMARKETCAP_API_KEY || "",

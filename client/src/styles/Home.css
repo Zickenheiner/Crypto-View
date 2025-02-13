@@ -31,4 +31,9 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
+
+  .home-container {
+    padding: 15px 50px;
+    padding-bottom: 50px;
+  }
 }

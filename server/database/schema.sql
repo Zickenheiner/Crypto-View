@@ -10,7 +10,9 @@ create table user (
 
 create table token (
   id int primary key auto_increment not null,
+  address varchar(255) not null unique,
   name varchar(255) not null,
+  symbol varchar(5) not null,
   price float not null,
   percent_price float not null,
   image varchar(255) not null

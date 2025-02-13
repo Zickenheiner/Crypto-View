@@ -32,23 +32,26 @@ const readByName: RequestHandler = async (req, res, next) => {
 
 const add: RequestHandler = async (req, res, next) => {
   try {
-    const { id } = req.params;
+    const { name, address, image, symbol } = req.body;
 
-    const [data, price] = await Promise.all([
-      tokenRepository.getDataOnCoinMarketCap(Number.parseInt(id)) as Promise<{
-        name: string;
-        logo: string;
-      }>,
-      tokenRepository.getPriceOnCoinMarketCap(Number.parseInt(id)) as Promise<{
-        quote: { USD: { price: number; percent_change_24h: number } };
-      }>,
-    ]);
+    const priceData = (await tokenRepository.getPriceOnCoinMarketCap(
+      symbol,
+    )) as {
+      quote: {
+        USD: {
+          price: number;
+          percent_change_24h: number;
+        };
+      };
+    };
 
     const result = await tokenRepository.create({
-      name: data.name,
-      price: price.quote.USD.price,
-      percent_price: price.quote.USD.percent_change_24h,
-      image: data.logo,
+      name: name,
+      symbol: symbol,
+      address: address,
+      price: priceData.quote.USD.price,
+      percent_price: priceData.quote.USD.percent_change_24h,
+      image: image,
     });
     res.json(result).status(201);
   } catch (error) {
@@ -56,4 +59,14 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, readByName, add };
+const destroy: RequestHandler = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const result = await tokenRepository.delete(Number.parseInt(id));
+    res.json(result).status(204);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export default { browse, read, readByName, add, destroy };

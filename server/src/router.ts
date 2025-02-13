@@ -17,7 +17,8 @@ router.put("/api/users/:id", userActions.edit);
 router.get("/api/tokens", tokenActions.browse);
 router.get("/api/tokens/:id", tokenActions.read);
 router.get("/api/tokens/name/:name", tokenActions.readByName);
-router.post("/api/tokens/:id", tokenActions.add);
+router.post("/api/tokens", tokenActions.add);
+router.delete("/api/tokens/:id", tokenActions.destroy);
 
 router.get("/api/favorites/:id", favoriteActions.read);
 router.post("/api/favorites", favoriteActions.add);
