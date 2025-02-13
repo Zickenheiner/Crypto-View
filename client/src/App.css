@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&family=Padauk:wght@400;700&family=Palanquin:wght@100;200;300;400;500;600;700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --main-color: #f2f3f3;
+  --secondary-color: #ffffff;
+  --third-color: #4a5568;
+  --border-color: #9b9a9b;
+  --positif-color: #18982b;
+  --negatif-color: #c51b1b;
+}
+
+body {
+  font-family: "Palanquin", serif;
+  background-color: var(--main-color);
+}

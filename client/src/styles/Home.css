@@ -1,0 +1,34 @@
+.home-container {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 50px;
+}
+
+.home-search-bar {
+  height: 30px;
+  width: 50%;
+  max-width: 300px;
+  padding: 10px;
+  border-radius: 50px;
+  border: 1px solid var(--border-color);
+}
+
+.home-tokens-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-open {
+  overflow: hidden;
+}
+
+@media screen and (min-width: 920px) {
+  .home-tokens-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}

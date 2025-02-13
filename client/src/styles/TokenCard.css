@@ -1,0 +1,53 @@
+.token-card-container {
+  background-color: var(--secondary-color);
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+}
+
+.token-card-token-img {
+  width: 50px;
+}
+
+.token-card-info-container {
+  flex: 2;
+}
+
+.token-card-info-name {
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.token-card-info-price {
+  font-family: "Padauk", serif;
+  font-weight: 400;
+  color: var(--border-color);
+}
+
+.token-card-info-percente {
+  flex: 1;
+  font-family: "Padauk", serif;
+  font-weight: 400;
+  text-align: center;
+}
+
+.token-card-info-percente.positif {
+  color: var(--positif-color);
+}
+
+.token-card-info-percente.negatif {
+  color: var(--negatif-color);
+}
+
+.token-card-favorite-img {
+  min-width: 30px;
+  cursor: pointer;
+}
+
+.token-card-favorite-img:hover {
+  transform: scale(1.1);
+  transition: 0.2s;
+}

@@ -1,0 +1,13 @@
+header {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid var(--border-color);
+  background-color: var(--secondary-color);
+}
+
+@media screen and (min-width: 650px) {
+  header {
+    justify-content: space-between;
+    padding: 0 15px;
+  }
+}

@@ -1,0 +1,27 @@
+nav {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 5px;
+  background-color: var(--secondary-color);
+  width: 40%;
+  max-width: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 50px;
+  padding: 5px;
+  border: 1px solid var(--border-color);
+}
+
+nav a {
+  display: flex;
+  align-items: center;
+  border-radius: 50px;
+}
+
+.navbar-img {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
