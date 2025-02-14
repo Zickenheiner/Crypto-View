@@ -4,12 +4,13 @@ import RegisterModal from "../components/RegisterModal";
 import TokenCard from "../components/TokenCard";
 import { useLogin } from "../contexts/LoginProvider";
 import "../styles/Home.css";
+import { SendTransaction } from "../components/SendTransaction";
 import { useToken } from "../contexts/TokenProvider";
 import type { TokenType } from "../types/types";
 
 export default function Home() {
   const { modalLoginIsOpen, modalRegisterIsOpen } = useLogin();
-  const { tokens, setTokens } = useToken();
+  const { tokens, setTokens, txModalIsOpen } = useToken();
   const [searchValue, setSearchValue] = useState("");
 
   const handleChangeSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,12 +18,12 @@ export default function Home() {
   };
 
   useEffect(() => {
-    if (modalLoginIsOpen || modalRegisterIsOpen) {
+    if (modalLoginIsOpen || modalRegisterIsOpen || txModalIsOpen) {
       document.body.classList.add("modal-open");
     } else {
       document.body.classList.remove("modal-open");
     }
-  }, [modalLoginIsOpen, modalRegisterIsOpen]);
+  }, [modalLoginIsOpen, modalRegisterIsOpen, txModalIsOpen]);
 
   useEffect(() => {
     (async () => {
@@ -50,6 +51,7 @@ export default function Home() {
     <div className={`home-container ${modalLoginIsOpen ? "modal-open" : ""}`}>
       {modalLoginIsOpen && <LoginModal />}
       {modalRegisterIsOpen && <RegisterModal />}
+      {txModalIsOpen && <SendTransaction />}
       <input
         type="text"
         placeholder="Rechercher"

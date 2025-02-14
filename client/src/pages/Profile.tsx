@@ -24,7 +24,7 @@ export default function Profile() {
           className="profile-nav-button"
           onClick={() => setPage("favorites")}
         >
-          Favories
+          Favoris
         </button>
         <button
           type="button"

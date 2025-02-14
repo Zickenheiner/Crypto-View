@@ -2,12 +2,15 @@ import "../styles/ProfileInfo.css";
 import { useEffect, useState } from "react";
 import { useAuth } from "../contexts/AuthProvider";
 import { useFavorite } from "../contexts/FavoriteProvider";
+import { useLogin } from "../contexts/LoginProvider";
 import type { User } from "../types/types";
+import DeleteAccountModal from "./DeleteAccountModal";
 import InputProfileInfo from "./InputProfileInfo";
 
 export default function ProfileInfo() {
   const { auth, setAuth } = useAuth();
   const { refresh } = useFavorite();
+  const { modalDeleteIsOpen, setModalDeleteIsOpen } = useLogin();
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
@@ -27,8 +30,10 @@ export default function ProfileInfo() {
       }
     })();
   }, [auth, refresh]);
+
   return (
     <div className="profile-info-container">
+      {modalDeleteIsOpen && <DeleteAccountModal />}
       <div>
         <h2 className="profile-info-label">Nom :</h2>
         <InputProfileInfo value={user?.lastname} column="lastname" />
@@ -55,6 +60,13 @@ export default function ProfileInfo() {
         onClick={() => setAuth(null)}
       >
         Se deconnecter
+      </button>
+      <button
+        type="button"
+        className="button-delete-account"
+        onClick={() => setModalDeleteIsOpen(true)}
+      >
+        Supprimer le compte
       </button>
     </div>
   );

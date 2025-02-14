@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { useLogin } from "../contexts/LoginProvider";
+import { toastError, toastSuccess } from "../services/toast";
 import type { UserRegister } from "../types/types";
 
 interface RegisterFormNextProps {
@@ -41,7 +42,9 @@ export default function RegisterFormNext({ userInfo }: RegisterFormNextProps) {
         if (response.ok) {
           setModalRegisterIsOpen(false);
           setModalLoginIsOpen(true);
+          toastSuccess("Votre compte a bien etait créer");
         } else {
+          toastError("Erreur lors de la création de votre compte");
           console.error("User not created");
         }
       } catch (error) {

@@ -28,6 +28,15 @@ class FavoriteRepository {
 
     return result.affectedRows;
   }
+
+  async deleteAll(userId: number) {
+    const [result] = await databaseClient.query<Result>(
+      "delete from favorite where user_id = ?",
+      [userId],
+    );
+
+    return result.affectedRows;
+  }
 }
 
 export default new FavoriteRepository();

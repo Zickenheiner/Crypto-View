@@ -1,0 +1,78 @@
+.tx-modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #3535357e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  padding: 10px;
+}
+
+.tx-modal-container {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+  max-height: 90%;
+  background-color: var(--secondary-color);
+  padding: 15px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+}
+
+.tx-modal-header-container {
+  display: flex;
+  gap: 20px;
+}
+
+.tx-modal-img {
+  width: 100px;
+  border-radius: 50px;
+}
+
+.tx-modal-info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.tx-modal-info-container > h3 {
+  font-family: "Padauk", serif;
+  font-weight: 400;
+  color: var(--border-color);
+}
+
+.tx-modal-container > form {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tx-modal-buy-button {
+  width: 100%;
+  height: 40px;
+  background-color: var(--third-color);
+  border: none;
+  color: var(--secondary-color);
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.tx-modal-amount {
+  width: 100%;
+  height: 30px;
+  border: 1px solid var(--border-color);
+  background-color: var(--main-color);
+  border-radius: 50px;
+  padding: 10px;
+}

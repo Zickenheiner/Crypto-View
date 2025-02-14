@@ -9,7 +9,9 @@ export interface UserRegister {
 
 export interface TokenType {
   id: number;
+  address: string;
   name: string;
+  symbol: string;
   price: number;
   percent_price: number;
   image: string;

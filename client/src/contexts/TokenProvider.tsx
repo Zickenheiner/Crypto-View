@@ -4,6 +4,10 @@ import type { TokenType } from "../types/types";
 interface TokenContextType {
   tokens: TokenType[];
   setTokens: (tokens: TokenType[]) => void;
+  txModalIsOpen: boolean;
+  setTxModalIsOpen: (value: boolean) => void;
+  currentToken: TokenType | null;
+  setCurrentToken: (value: TokenType | null) => void;
 }
 
 const TokenContext = createContext<TokenContextType | null>(null);
@@ -12,6 +16,8 @@ export default function TokenProvider({
   children,
 }: { children: React.ReactNode }) {
   const [tokens, setTokens] = useState<TokenType[]>([]);
+  const [txModalIsOpen, setTxModalIsOpen] = useState<boolean>(false);
+  const [currentToken, setCurrentToken] = useState<TokenType | null>(null);
 
   useEffect(() => {
     (async () => {
@@ -24,7 +30,16 @@ export default function TokenProvider({
   }, []);
 
   return (
-    <TokenContext.Provider value={{ tokens, setTokens }}>
+    <TokenContext.Provider
+      value={{
+        tokens,
+        setTokens,
+        txModalIsOpen,
+        setTxModalIsOpen,
+        currentToken,
+        setCurrentToken,
+      }}
+    >
       {children}
     </TokenContext.Provider>
   );

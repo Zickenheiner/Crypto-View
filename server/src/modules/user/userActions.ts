@@ -1,4 +1,5 @@
 import type { RequestHandler } from "express";
+import favoriteRepository from "../favorite/favoriteRepository";
 import userRepository from "./userRepository";
 
 const browse: RequestHandler = async (req, res, next) => {
@@ -68,6 +69,23 @@ const edit: RequestHandler = async (req, res, next) => {
   }
 };
 
+const destroy: RequestHandler = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    await favoriteRepository.deleteAll(Number.parseInt(id));
+    const affectedRows = await userRepository.delete(Number.parseInt(id));
+
+    if (affectedRows === 0) {
+      res.sendStatus(404);
+    } else {
+      res.sendStatus(200);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
 const verifyEmail: RequestHandler = async (req, res, next) => {
   try {
     const email = req.query.email as string;
@@ -83,4 +101,4 @@ const verifyEmail: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, add, edit, verifyEmail };
+export default { browse, read, add, edit, destroy, verifyEmail };

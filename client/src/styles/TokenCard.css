@@ -10,6 +10,13 @@
 
 .token-card-token-img {
   width: 50px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.token-card-token-img:hover {
+  transform: scale(1.1);
+  transition: 0.2s;
 }
 
 .token-card-info-container {

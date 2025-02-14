@@ -5,6 +5,8 @@ interface LoginContextType {
   setModalLoginIsOpen: (value: boolean) => void;
   modalRegisterIsOpen: boolean;
   setModalRegisterIsOpen: (value: boolean) => void;
+  modalDeleteIsOpen: boolean;
+  setModalDeleteIsOpen: (value: boolean) => void;
 }
 
 const LoginContext = createContext<LoginContextType | null>(null);
@@ -14,6 +16,8 @@ export default function LoginProvider({
 }: { children: React.ReactNode }) {
   const [modalLoginIsOpen, setModalLoginIsOpen] = useState(false);
   const [modalRegisterIsOpen, setModalRegisterIsOpen] = useState(false);
+  const [modalDeleteIsOpen, setModalDeleteIsOpen] = useState(true);
+
   return (
     <LoginContext.Provider
       value={{
@@ -21,6 +25,8 @@ export default function LoginProvider({
         setModalLoginIsOpen,
         modalRegisterIsOpen,
         setModalRegisterIsOpen,
+        modalDeleteIsOpen,
+        setModalDeleteIsOpen,
       }}
     >
       {children}

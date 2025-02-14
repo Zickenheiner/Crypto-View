@@ -1,13 +1,46 @@
 header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   border-bottom: 2px solid var(--border-color);
   background-color: var(--secondary-color);
+  padding-right: 10px;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+}
+
+.header-container > h1 {
+  font-size: 20px;
+}
+
+.button-login {
+  width: 93.36px;
+  height: 40px;
+  background-color: #31bb9b;
+  color: var(--secondary-color);
+  border-radius: 12px;
+  cursor: pointer;
+  border: none;
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.button-login:hover {
+  transform: scale(1.025);
+  transition: 0.2s;
 }
 
 @media screen and (min-width: 650px) {
   header {
     justify-content: space-between;
     padding: 0 15px;
+  }
+
+  .header-container > h1 {
+    font-size: 30px;
   }
 }

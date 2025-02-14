@@ -7,10 +7,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 // Import the main app component
 import App from "./App";
-import AuthProvider from "./contexts/AuthProvider";
-import FavoriteProvider from "./contexts/FavoriteProvider";
-import LoginProvider from "./contexts/LoginProvider";
-import TokenProvider from "./contexts/TokenProvider";
+import GlobalProvider from "./contexts/GlobalProvider";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 
@@ -52,15 +49,9 @@ if (rootElement == null) {
 // Render the app inside the root element
 createRoot(rootElement).render(
   <StrictMode>
-    <AuthProvider>
-      <LoginProvider>
-        <FavoriteProvider>
-          <TokenProvider>
-            <RouterProvider router={router} />
-          </TokenProvider>
-        </FavoriteProvider>
-      </LoginProvider>
-    </AuthProvider>
+    <GlobalProvider>
+      <RouterProvider router={router} />
+    </GlobalProvider>
   </StrictMode>,
 );
 

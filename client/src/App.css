@@ -10,9 +10,11 @@
   --main-color: #f2f3f3;
   --secondary-color: #ffffff;
   --third-color: #4a5568;
+  --four-color: #31bb9b;
   --border-color: #9b9a9b;
   --positif-color: #18982b;
   --negatif-color: #c51b1b;
+  --font-family: "Palanquin", serif;
 }
 
 body {

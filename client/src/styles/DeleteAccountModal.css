@@ -1,0 +1,70 @@
+.delete-modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #3535357e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  padding: 10px;
+}
+
+.delete-modal-container {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+  height: fit-content;
+  background-color: var(--secondary-color);
+  padding: 15px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-modal-container > h2 {
+  font-size: 16px;
+}
+
+.delete-modal-button-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.delete-modal-button {
+  background-color: var(--secondary-color);
+  color: var(--negatif-color);
+  max-width: 200px;
+  height: 40px;
+  border: 1px solid var(--negatif-color);
+  border-radius: 50px;
+  padding: 0 20px;
+  align-self: center;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.delete-modal-button.delete {
+    background-color: var(--negatif-color);
+    color: var(--secondary-color);
+    max-width: 200px;
+    height: 40px;
+    border: none;
+    border-radius: 50px;
+    padding: 0 20px;
+    align-self: center;
+    margin-top: 15px;
+    cursor: pointer;
+  }
+
+  .delete-modal-button:hover {
+    transform: scale(1.025);
+    transition: 0.3s;
+  }

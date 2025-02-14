@@ -2,13 +2,11 @@ import { type FormEventHandler, useRef, useState } from "react";
 import { useAuth } from "../contexts/AuthProvider";
 import { useLogin } from "../contexts/LoginProvider";
 import "../styles/LoginModal.css";
-import { useNavigate } from "react-router-dom";
 import closeImg from "/images/close.svg";
 
 export default function LoginModal() {
   const { setModalLoginIsOpen, setModalRegisterIsOpen } = useLogin();
   const { setAuth } = useAuth();
-  const navigate = useNavigate();
   const [message, setMessage] = useState<string | null>(null);
 
   const emailRef = useRef<HTMLInputElement>(null);
@@ -41,7 +39,6 @@ export default function LoginModal() {
 
         setAuth(user);
         setModalLoginIsOpen(false);
-        navigate("/profile");
       } else {
         setMessage("Email ou mot de passe incorrect");
       }

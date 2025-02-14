@@ -60,6 +60,15 @@ class UserRepository {
 
     return result.affectedRows;
   }
+
+  async delete(id: number) {
+    const [result] = await databaseClient.query<Result>(
+      "delete from user where id = ?",
+      [id],
+    );
+
+    return result.affectedRows;
+  }
 }
 
 export default new UserRepository();
